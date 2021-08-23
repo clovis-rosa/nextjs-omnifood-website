@@ -1,0 +1,59 @@
+.btn,
+.btn:link,
+.btn:visited {
+  display: inline-block;
+
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1.6rem 3.2rem;
+  border-radius: 9px;
+
+  /* Only necessary for .btn */
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+
+  /* Put transition on original "state" */
+  /* transition: background-color 0.3s; */
+  transition: all 0.3s;
+}
+
+.btn--full:link,
+.btn--full:visited {
+  background-color: var(--clr-link);
+  color: var(--clr-white);
+}
+
+.btn--full:hover,
+.btn--full:active {
+  background-color: var(--clr-link-hover);
+}
+
+.btn--outline:link,
+.btn--outline:visited {
+  background-color: var(--clr-white);
+  color: var(--clr-dark);
+}
+
+.btn--outline:hover,
+.btn--outline:active {
+  background-color: var(--clr-link-outline);
+
+  /* border: 3px solid var(--clr-white); */
+
+  /* Trick to add border inside */
+  box-shadow: inset 0 0 0 3px var(--clr-white);
+}
+
+.btn--form {
+  background-color: #45260a;
+  color: var(--clr-link-outline);
+  align-self: end;
+  padding: 1.2rem;
+}
+
+.btn--form:hover {
+  background-color: var(--clr-white);
+  color: var(--clr-dark);
+}
