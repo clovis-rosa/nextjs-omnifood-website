@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { heroDeliveredData } from '@/data/HeroDeliveredData'
+import { featuredData } from '@/data/FeaturedData'
 
 export default function Featured() {
   return (
@@ -8,17 +8,9 @@ export default function Featured() {
         <FeaturedContainer>
           <h2>As featured in</h2>
           <FeaturedLogos>
-            <img src="/images/logos/techcrunch.png" alt="Techcrunch logo" />
-            <img
-              src="/images/logos/business-insider.png"
-              alt="Business Insider logo"
-            />
-            <img
-              src="/images/logos/the-new-york-times.png"
-              alt="The New York Times logo"
-            />
-            <img src="/images/logos/forbes.png" alt="Forbes logo" />
-            <img src="/images/logos/usa-today.png" alt="USA Today logo" />
+            {featuredData.map(({ id, image, alt }) => (
+              <img key={id} src={`/images/logos/${image}`} alt={alt} />
+            ))}
           </FeaturedLogos>
         </FeaturedContainer>
       </FeaturedSectionStyles>
