@@ -4,6 +4,9 @@ export default function Button({
   href,
   label,
   padding,
+  fontWeight,
+  fontSize,
+  fontSizeMobile,
   color,
   background,
   hover,
@@ -11,7 +14,11 @@ export default function Button({
 }) {
   return (
     <>
-      <ButtonStyles>
+      <ButtonStyles
+        fontWeight={fontWeight}
+        fontSize={fontSize}
+        fontSizeMobile={fontSizeMobile}
+      >
         <Anchor
           href={href}
           padding={padding}
@@ -39,19 +46,18 @@ const ButtonStyles = styled.button`
   text-decoration: none;
   color: var(--clr-white);
   font-family: var(--ff-primary);
-  font-weight: 500;
-  font-size: 1.8rem;
+  font-weight: ${(props) => props.fontWeight || '500'};
+  font-size: ${(props) => props.fontSize || '1.8rem'};
   transition: all 0.3s;
 
   @media (max-width: 75em) {
     margin-top: 3rem; //
-    font-size: 3rem;
+    font-size: ${(props) => props.fontSizeMobile || '3rem'};
   }
 `
 
 const Anchor = styled.a`
   text-decoration: none;
-  /* padding: 1.2rem 2.4rem; */
   padding: ${(props) => props.padding || '1.2rem 2.4rem'};
   border-radius: 9px;
   color: ${(props) => props.color};
