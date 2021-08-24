@@ -75,6 +75,8 @@ const NavbarStyles = styled.header`
   background: ${({ active }) =>
     active ? 'rgba(255, 255, 255, 0.97)' : 'var(--clr-link-outline)'};
   box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
+  box-shadow: ${({ active }) =>
+    active ? '0 1.2rem 3.2rem rgba(0, 0, 0, 0.03)' : 'none'};
   z-index: 100;
   transition: all 0.2s ease;
   backface-visibility: hidden;
