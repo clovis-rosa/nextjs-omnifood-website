@@ -1,30 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
 import Link from 'next/link'
+import styled from 'styled-components'
 import Button from '@/components/Button'
-
-const navigationData = [
-  {
-    id: '001',
-    label: 'How it works',
-    href: '#how',
-  },
-  {
-    id: '002',
-    label: 'Meals',
-    href: '#meals',
-  },
-  {
-    id: '003',
-    label: 'Testimonials',
-    href: '#testimonials',
-  },
-  {
-    id: '004',
-    label: 'Pricing',
-    href: '#pricing',
-  },
-]
+import { navigationData, buttonData } from '@/data/MenuLinkData'
 
 export default function Navbar() {
   const [mounted, setMounted] = useState(false)
@@ -68,8 +46,8 @@ export default function Navbar() {
 
           <NavItem>
             <Button
-              href="#cta"
-              label="Try for free"
+              href={buttonData[0].href}
+              label={buttonData[0].label}
               color="var(--clr-white)"
               background="var(--clr-link)"
             />
