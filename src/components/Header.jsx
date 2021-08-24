@@ -67,7 +67,12 @@ export default function Navbar() {
           ))}
 
           <NavItem>
-            <Button href="#cta" label="Try for free" />
+            <Button
+              href="#cta"
+              label="Try for free"
+              color="var(--clr-white)"
+              background="var(--clr-link)"
+            />
           </NavItem>
         </NavList>
       </Nav>
@@ -93,7 +98,7 @@ const NavbarStyles = styled.header`
   box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
   z-index: 100;
   transition: all 0.2s ease;
-  /* backface-visibility: hidden; */
+  backface-visibility: hidden;
 
   position: fixed;
   top: 0;
@@ -161,11 +166,6 @@ const NavItem = styled.li`
   font-size: inherit;
   font-weight: 500;
   white-space: nowrap;
-  /* 
-  @media (max-width: 59em) {
-    width: calc(100% - 32px);
-    margin: 0;
-  } */
 `
 
 const NavLink = styled.a`
@@ -175,6 +175,10 @@ const NavLink = styled.a`
   font-weight: 500;
   font-size: 1.8rem;
   transition: all 0.3s;
+
+  &:visited {
+    color: var(--clr-heading);
+  }
 
   &:hover,
   &:active {

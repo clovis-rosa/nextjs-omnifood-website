@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 
-export default function Button({ href, label }) {
+export default function Button({ href, label, color, background }) {
   return (
     <>
       <ButtonStyles>
-        <Anchor href={href}>{label}</Anchor>
+        <Anchor href={href} color={color} background={background}>
+          {label}
+        </Anchor>
       </ButtonStyles>
     </>
   )
@@ -19,7 +21,7 @@ const ButtonStyles = styled.button`
 
   display: inline-block;
   text-decoration: none;
-  /* color: var(--clr-heading); */
+  color: var(--clr-white);
   font-family: var(--ff-primary);
   font-weight: 500;
   font-size: 1.8rem;
@@ -27,6 +29,7 @@ const ButtonStyles = styled.button`
 
   @media (max-width: 75em) {
     margin-top: 3rem; //
+    font-size: 3rem;
   }
 `
 
@@ -34,10 +37,16 @@ const Anchor = styled.a`
   text-decoration: none;
   padding: 1.2rem 2.4rem;
   border-radius: 9px;
-  color: var(--clr-white);
-  background-color: var(--clr-link);
+  color: ${(props) => props.color};
+  background: ${(props) => props.background};
 
-  @media (max-width: 59em) {
-    /* font-size: 3rem; */
+  &:visited {
+    color: ${(props) => props.color};
+    background: ${(props) => props.background};
+  }
+
+  &:hover,
+  &:active {
+    background: var(--clr-link-hover);
   }
 `
