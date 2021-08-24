@@ -48,7 +48,16 @@ export default function Hero() {
               </p>
             </HeroDeliveredMeals>
           </HeroTextBox>
-          <HeroImageBox></HeroImageBox>
+          <HeroImageBox>
+            <picture>
+              <source srcSet="images/hero.webp" type="image/webp" />
+              <source srcSet="images/hero-min.png" type="image/png" />
+              <img
+                src="/images/hero-min.png"
+                alt="Woman enjoying food, meals in storage container, and food bowls on a table"
+              />
+            </picture>
+          </HeroImageBox>
         </HeroGrid>
       </HeroSectionStyles>
     </>
@@ -56,7 +65,7 @@ export default function Hero() {
 }
 
 const HeroSectionStyles = styled.section`
-  background-color: #fdf2e9;
+  background-color: var(--clr-link-outline);
   padding: 4.8rem 0 9.6rem 0;
 
   @media (max-width: 34em) {
@@ -170,5 +179,19 @@ const HeroDeliveredMeals = styled.div`
 const HeroImageBox = styled.div`
   @media (max-width: 59em) {
     text-align: center;
+  }
+
+  picture {
+    img {
+      width: 100%;
+
+      @media (max-width: 59em) {
+        width: 60%;
+      }
+
+      @media (max-width: 34em) {
+        width: 80%;
+      }
+    }
   }
 `
