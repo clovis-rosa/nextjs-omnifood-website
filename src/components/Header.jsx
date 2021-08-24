@@ -1,8 +1,31 @@
 import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
 import styled from 'styled-components'
+import Link from 'next/link'
 
-export default function Header() {
+const navigationData = [
+  {
+    id: '001',
+    label: 'How it works',
+    href: '#how',
+  },
+  {
+    id: '002',
+    label: 'Meals',
+    href: '#meals',
+  },
+  {
+    id: '003',
+    label: 'Testimonials',
+    href: '#testimonials',
+  },
+  {
+    id: '004',
+    label: 'Pricing',
+    href: '#pricing',
+  },
+]
+
+export default function Navbar() {
   const [mounted, setMounted] = useState(false)
   const [click, setClick] = useState(false)
   const [scroll, setScroll] = useState(false)
@@ -27,67 +50,121 @@ export default function Header() {
   if (!mounted) return null
 
   return (
-    <>
-      <HeaderStyles>
-        <Link href="#" passHref>
-          <a>
-            <img src="/images/omnifood-logo.png" alt="Omnifood logo" />
-          </a>
-        </Link>
-        <nav>
-          <MainNavList>
-            <li>
-              <a href="#how">How it works</a>
+    <NavbarStyles active={scroll}>
+      <Link href="/">
+        <a onClick={closeMobileMenu}>
+          <NavbarLogo src="/images/omnifood-logo.png" alt="Omnifood logo" />
+        </a>
+      </Link>
+
+      <Nav onClick={handleClick} click={click}>
+        <NavList>
+          {navigationData.map(({ id, href, label }) => (
+            <li key={id}>
+              <a href={href}>{label}</a>
             </li>
-            <li>
-              <a href="#meals">Meals</a>
-            </li>
-            <li>
-              <a href="#testimonials">Testimonials</a>
-            </li>
-            <li>
-              <a href="#pricing">Pricing</a>
-            </li>
+          ))}
+          <li>
             <MainNavCta>
               <a href="#cta">Try for free</a>
             </MainNavCta>
-          </MainNavList>
-          <MobileMenu onClick={handleClick}>
-            {click ? <MobileMenuClose /> : <MobileMenuOpen />}
-          </MobileMenu>
-        </nav>
-      </HeaderStyles>
-    </>
+          </li>
+        </NavList>
+      </Nav>
+      <MobileMenu onClick={handleClick}>
+        {click ? <MobileMenuClose /> : <MobileMenuOpen />}
+      </MobileMenu>
+    </NavbarStyles>
   )
 }
 
-const HeaderStyles = styled.header`
+const NavbarStyles = styled.header`
+  height: ${({ active }) => (active ? '8rem' : '9.6rem')};
+  width: 100%;
+  min-width: 320px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fdf2e9;
-
-  /* Because we want header to be sticky later */
-  height: 9.6rem;
   padding: 0 4.8rem;
+  color: var(--clr-dark);
+  background: ${({ active }) =>
+    active ? 'rgba(255, 255, 255, 0.97)' : 'var(--clr-link-outline)'};
+  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
+  z-index: 100;
+  transition: all 0.2s ease;
+  /* backface-visibility: hidden; */
 
-  img {
-    height: 2.2rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  max-width: 100%;
+
+  @media only screen and (max-width: 75em) {
+    justify-content: space-between;
+    padding: 0 3.2rem;
   }
 `
 
-const MainNavList = styled.ul`
-  list-style: none;
+const NavbarLogo = styled.img`
+  height: 2.2rem;
+  width: 100%;
+`
+
+const Nav = styled.nav`
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+
+  @media only screen and (max-width: 75em) {
+    position: fixed;
+    top: 9.6rem;
+    left: 0;
+    width: 100%;
+    display: flex;
+    visibility: ${({ click }) => (click ? 'visible' : 'hidden')};
+    opacity: ${({ click }) => (click ? '1' : '0')};
+    padding-bottom: 24px;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.97);
+    z-index: 1;
+    backface-visibility: hidden;
+    transition: all 0.2s ease-in-out;
+
+    &::after {
+      content: '';
+      visibility: ${({ click }) => (click ? 'visible' : 'hidden')};
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(8px);
+      pointer-events: none;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+`
+
+const NavList = styled.ul`
   display: flex;
   align-items: center;
-  gap: 4.8rem;
+
+  @media only screen and (max-width: 75em) {
+    flex-direction: column;
+  }
 
   li {
+    margin-left: 24px;
+    font-size: inherit;
+    font-weight: 500;
+    white-space: nowrap;
+
     a:link,
     a:visited {
       display: inline-block;
       text-decoration: none;
-      color: #333;
+      color: var(--clr-heading);
       font-weight: 500;
       font-size: 1.8rem;
       transition: all 0.3s;
@@ -97,36 +174,52 @@ const MainNavList = styled.ul`
         color: var(--clr-link-hover);
       }
     }
-  }
-`
 
-const MainNavCta = styled(MainNavList)`
-  a:link,
-  a:visited {
-    padding: 1.2rem 2.4rem;
-    border-radius: 9px;
-    color: var(--clr-white);
-    background-color: var(--clr-link);
+    @media only screen and (max-width: 59em) {
+      width: calc(100% - 32px);
+      margin: 0;
 
-    &:hover,
-    &:active {
-      background-color: var(--clr-link-hover);
+      a {
+        width: 100%;
+        display: block;
+        padding: 24px 0 24px 12px;
+        cursor: pointer;
+      }
+
+      a:link,
+      a:visited {
+        font-size: 3rem;
+      }
+    }
+
+    a.button {
+      display: inline-flex;
+      height: 36px;
+      padding: 0 12px;
+      font-size: 16px;
+
+      @media only screen and (max-width: 75em) {
+        height: 48px;
+        font-size: 18px;
+        margin-top: 12px;
+        padding: 0 24px;
+      }
     }
   }
 `
 
-const MobileMenu = styled.button`
-  border: none;
-  background: none;
-  cursor: pointer;
-  display: none;
+const MainNavCta = styled.li``
 
+const MobileMenu = styled.div`
   svg {
+    height: 32px;
+    width: 32px;
     margin: 0 4px;
-    stroke: var(--clr-dark);
+    stroke: black;
     cursor: pointer;
   }
-  @media only screen and (min-width: 768px) {
+
+  @media only screen and (min-width: 75em) {
     svg {
       display: none;
     }
@@ -136,18 +229,17 @@ const MobileMenu = styled.button`
 const MobileMenuOpen = () => {
   return (
     <svg
-      id="headerMobileMenuOpen"
-      className="menu"
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
       fill="none"
-      strokeWidth="2"
-      strokeMiterlimit="10"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
     >
-      <path d="M5 18h7m-7-6h14M5 6h14"></path>
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M4 6h16M4 12h16M4 18h16"
+      />
     </svg>
   )
 }
@@ -155,20 +247,17 @@ const MobileMenuOpen = () => {
 const MobileMenuClose = () => {
   return (
     <svg
-      id="headerMobileMenuClose"
-      className="menu"
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
       fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
     >
       <path
-        d="M17 7L7 17m10 0L7 7"
-        strokeWidth="2"
-        strokeMiterlimit="10"
         strokeLinecap="round"
         strokeLinejoin="round"
-      ></path>
+        strokeWidth={2}
+        d="M6 18L18 6M6 6l12 12"
+      />
     </svg>
   )
 }
