@@ -3,6 +3,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import Button from '@/components/Button'
 import { navigationData, buttonData } from '@/data/MenuLinkData'
+import { MobileMenuOpen, MobileMenuClose } from '@/components/SvgFiles'
 
 export default function Navbar() {
   const [mounted, setMounted] = useState(false)
@@ -191,39 +192,3 @@ const MobileMenu = styled.div`
     }
   }
 `
-
-const MobileMenuOpen = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M4 6h16M4 12h16M4 18h16"
-      />
-    </svg>
-  )
-}
-
-const MobileMenuClose = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M6 18L18 6M6 6l12 12"
-      />
-    </svg>
-  )
-}
