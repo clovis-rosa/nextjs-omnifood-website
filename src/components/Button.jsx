@@ -1,62 +1,43 @@
-import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import Link from 'next/link'
 
-const Button = () => {
+export default function Button({ href, label }) {
   return (
-    <NavbarStyles active={scroll}>
-      <Link href="/">
-        <a onClick={closeMobileMenu}>
-          <NavbarLogo src="/images/omnifood-logo.png" alt="Omnifood logo" />
-        </a>
-      </Link>
-
-      <Nav onClick={handleClick} click={click}>
-        <NavList>
-          {navigationData.map(({ id, href, label }) => (
-            <li key={id}>
-              <a href={href}>{label}</a>
-            </li>
-          ))}
-          <li>
-            <MainNavCta>
-              <a href="#cta">Try for free</a>
-            </MainNavCta>
-          </li>
-        </NavList>
-      </Nav>
-      <MobileMenu onClick={handleClick}>
-        {click ? <MobileMenuClose /> : <MobileMenuOpen />}
-      </MobileMenu>
-    </NavbarStyles>
+    <>
+      <ButtonStyles>
+        <Anchor href={href}>{label}</Anchor>
+      </ButtonStyles>
+    </>
   )
 }
 
-export default Navbar
+const ButtonStyles = styled.button`
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  white-space: nowrap;
+  cursor: pointer;
 
-const NavbarStyles = styled.header`
-  height: ${({ active }) => (active ? '8rem' : '9.6rem')};
-  width: 100%;
-  min-width: 320px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 4.8rem;
-  color: var(--clr-dark);
-  background: ${({ active }) =>
-    active ? 'rgba(255, 255, 255, 0.97)' : 'var(--clr-link-outline)'};
-  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
-  z-index: 100;
-  transition: all 0.2s ease;
-  /* backface-visibility: hidden; */
+  display: inline-block;
+  text-decoration: none;
+  /* color: var(--clr-heading); */
+  font-family: var(--ff-primary);
+  font-weight: 500;
+  font-size: 1.8rem;
+  transition: all 0.3s;
 
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  max-width: 100%;
+  @media (max-width: 59em) {
+    margin-top: 3rem; //
+  }
+`
 
-  @media only screen and (max-width: 75em) {
-    justify-content: space-between;
-    padding: 0 3.2rem;
+const Anchor = styled.a`
+  text-decoration: none;
+  padding: 1.2rem 2.4rem;
+  border-radius: 9px;
+  color: var(--clr-white);
+  background-color: var(--clr-link);
+
+  @media (max-width: 59em) {
+    /* font-size: 3rem; */
   }
 `

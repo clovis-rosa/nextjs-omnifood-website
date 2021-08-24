@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
+import Button from '@/components/Button'
 
 const navigationData = [
   {
@@ -60,17 +61,17 @@ export default function Navbar() {
       <Nav onClick={handleClick} click={click}>
         <NavList>
           {navigationData.map(({ id, href, label }) => (
-            <li key={id}>
-              <a href={href}>{label}</a>
-            </li>
+            <NavItem key={id}>
+              <NavLink href={href}>{label}</NavLink>
+            </NavItem>
           ))}
-          <li>
-            <MainNavCta>
-              <a href="#cta">Try for free</a>
-            </MainNavCta>
-          </li>
+
+          <NavItem>
+            <Button href="#cta" label="Try for free" />
+          </NavItem>
         </NavList>
       </Nav>
+
       <MobileMenu onClick={handleClick}>
         {click ? <MobileMenuClose /> : <MobileMenuOpen />}
       </MobileMenu>
@@ -99,7 +100,7 @@ const NavbarStyles = styled.header`
   bottom: 0;
   max-width: 100%;
 
-  @media only screen and (max-width: 75em) {
+  @media (max-width: 75em) {
     justify-content: space-between;
     padding: 0 3.2rem;
   }
@@ -115,7 +116,7 @@ const Nav = styled.nav`
   justify-content: flex-end;
   flex: 1;
 
-  @media only screen and (max-width: 75em) {
+  @media (max-width: 75em) {
     position: fixed;
     top: 9.6rem;
     left: 0;
@@ -150,65 +151,48 @@ const NavList = styled.ul`
   display: flex;
   align-items: center;
 
-  @media only screen and (max-width: 75em) {
+  @media (max-width: 75em) {
     flex-direction: column;
-  }
-
-  li {
-    margin-left: 24px;
-    font-size: inherit;
-    font-weight: 500;
-    white-space: nowrap;
-
-    a:link,
-    a:visited {
-      display: inline-block;
-      text-decoration: none;
-      color: var(--clr-heading);
-      font-weight: 500;
-      font-size: 1.8rem;
-      transition: all 0.3s;
-
-      &:hover,
-      &:active {
-        color: var(--clr-link-hover);
-      }
-    }
-
-    @media only screen and (max-width: 59em) {
-      width: calc(100% - 32px);
-      margin: 0;
-
-      a {
-        width: 100%;
-        display: block;
-        padding: 24px 0 24px 12px;
-        cursor: pointer;
-      }
-
-      a:link,
-      a:visited {
-        font-size: 3rem;
-      }
-    }
-
-    a.button {
-      display: inline-flex;
-      height: 36px;
-      padding: 0 12px;
-      font-size: 16px;
-
-      @media only screen and (max-width: 75em) {
-        height: 48px;
-        font-size: 18px;
-        margin-top: 12px;
-        padding: 0 24px;
-      }
-    }
   }
 `
 
-const MainNavCta = styled.li``
+const NavItem = styled.li`
+  margin-left: 24px;
+  font-size: inherit;
+  font-weight: 500;
+  white-space: nowrap;
+  /* 
+  @media (max-width: 59em) {
+    width: calc(100% - 32px);
+    margin: 0;
+  } */
+`
+
+const NavLink = styled.a`
+  display: inline-block;
+  text-decoration: none;
+  color: var(--clr-heading);
+  font-weight: 500;
+  font-size: 1.8rem;
+  transition: all 0.3s;
+
+  &:hover,
+  &:active {
+    color: var(--clr-link-hover);
+  }
+
+  @media (max-width: 75em) {
+    width: 100%;
+    display: block;
+    padding: 24px 0 24px 12px;
+    cursor: pointer;
+
+    &:link,
+    &:visited {
+      font-size: 3rem;
+    }
+  }
+`
 
 const MobileMenu = styled.div`
   svg {
@@ -219,7 +203,7 @@ const MobileMenu = styled.div`
     cursor: pointer;
   }
 
-  @media only screen and (min-width: 75em) {
+  @media (min-width: 75em) {
     svg {
       display: none;
     }
