@@ -121,7 +121,7 @@ const HeroTextBox = styled.div`
     margin-bottom: 4.8rem;
   }
 
-  button {
+  a {
     &:first-of-type {
       margin-right: 1.6rem;
 
@@ -130,10 +130,8 @@ const HeroTextBox = styled.div`
       }
     }
 
-    a {
-      @media (max-width: 34em) {
-        padding: 2.4rem 1.6rem;
-      }
+    @media (max-width: 34em) {
+      padding: 2.4rem 1.6rem;
     }
   }
 

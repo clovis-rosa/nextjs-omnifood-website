@@ -75,8 +75,7 @@ const NavbarStyles = styled.header`
   background: ${({ active }) =>
     active ? 'rgba(255, 255, 255, 0.97)' : 'var(--clr-link-outline)'};
   box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
-  box-shadow: ${({ active }) =>
-    active ? '0 1.2rem 3.2rem rgba(0, 0, 0, 0.03)' : 'none'};
+  box-shadow: ${({ active }) => (active ? '' : 'none')};
   z-index: 100;
   transition: all 0.2s ease;
   backface-visibility: hidden;
@@ -102,7 +101,7 @@ const Nav = styled.nav`
   justify-content: flex-end;
   flex: 1;
 
-  @media (max-width: 75em) {
+  @media (max-width: 59em) {
     position: fixed;
     top: 9.6rem;
     left: 0;
@@ -134,19 +133,26 @@ const Nav = styled.nav`
 `
 
 const NavList = styled.ul`
+  list-style: none;
   display: flex;
   align-items: center;
+  gap: 4.8rem;
 
   @media (max-width: 75em) {
+    gap: 3.2rem;
+  }
+
+  @media (max-width: 59em) {
     flex-direction: column;
+    gap: 4.8rem;
   }
 `
 
 const NavItem = styled.li`
-  margin-left: 24px;
+  /* margin-left: 24px;
   font-size: inherit;
   font-weight: 500;
-  white-space: nowrap;
+  white-space: nowrap; */
 `
 
 const NavLink = styled.a`
@@ -166,7 +172,7 @@ const NavLink = styled.a`
     color: var(--clr-link-hover);
   }
 
-  @media (max-width: 75em) {
+  @media (max-width: 59em) {
     width: 100%;
     display: block;
     padding: 24px 0 24px 0px;
@@ -188,7 +194,7 @@ const MobileMenu = styled.div`
     cursor: pointer;
   }
 
-  @media (min-width: 75em) {
+  @media (min-width: 59em) {
     svg {
       display: none;
     }
