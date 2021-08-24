@@ -25,7 +25,7 @@ const ButtonStyles = styled.button`
   font-size: 1.8rem;
   transition: all 0.3s;
 
-  @media (max-width: 59em) {
+  @media (max-width: 75em) {
     margin-top: 3rem; //
   }
 `

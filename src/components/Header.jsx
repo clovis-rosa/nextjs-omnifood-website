@@ -184,7 +184,7 @@ const NavLink = styled.a`
   @media (max-width: 75em) {
     width: 100%;
     display: block;
-    padding: 24px 0 24px 12px;
+    padding: 24px 0 24px 0px;
     cursor: pointer;
 
     &:link,
