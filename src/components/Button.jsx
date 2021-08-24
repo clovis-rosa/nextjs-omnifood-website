@@ -1,10 +1,25 @@
 import styled from 'styled-components'
 
-export default function Button({ href, label, color, background }) {
+export default function Button({
+  href,
+  label,
+  padding,
+  color,
+  background,
+  hover,
+  outline,
+}) {
   return (
     <>
       <ButtonStyles>
-        <Anchor href={href} color={color} background={background}>
+        <Anchor
+          href={href}
+          padding={padding}
+          color={color}
+          background={background}
+          hover={hover}
+          outline={outline}
+        >
           {label}
         </Anchor>
       </ButtonStyles>
@@ -18,6 +33,7 @@ const ButtonStyles = styled.button`
   border-radius: 6px;
   white-space: nowrap;
   cursor: pointer;
+  padding: 0;
 
   display: inline-block;
   text-decoration: none;
@@ -35,7 +51,8 @@ const ButtonStyles = styled.button`
 
 const Anchor = styled.a`
   text-decoration: none;
-  padding: 1.2rem 2.4rem;
+  /* padding: 1.2rem 2.4rem; */
+  padding: ${(props) => props.padding || '1.2rem 2.4rem'};
   border-radius: 9px;
   color: ${(props) => props.color};
   background: ${(props) => props.background};
@@ -47,6 +64,7 @@ const Anchor = styled.a`
 
   &:hover,
   &:active {
-    background: var(--clr-link-hover);
+    background: ${(props) => props.hover || 'var(--clr-link-hover)'};
+    box-shadow: ${(props) => props.outline || 'none'};
   }
 `
