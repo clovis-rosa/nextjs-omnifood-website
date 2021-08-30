@@ -5,7 +5,7 @@ import { HowItWorksData } from '@/data/HowItWorksData'
 export default function HowItWorks() {
   return (
     <>
-      <HowItWorksSectionStyles>
+      <HowItWorksSectionStyles id="how">
         <HowItWorksContainer>
           <HowItWorksSpan>How it works</HowItWorksSpan>
           <HowItWorksH2>
