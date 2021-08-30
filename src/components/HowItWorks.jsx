@@ -11,30 +11,34 @@ export default function HowItWorks() {
           <HowItWorksH2>
             Your daily dose of health in 3 simple steps
           </HowItWorksH2>
-          <HowItWorksGrid>
-            {HowItWorksData.map(
-              ({
-                id,
-                step_number,
-                heading_tertiary,
-                step_description,
-                step_img,
-                step_img_alt,
-              }) => (
-                <React.Fragment key={id}>
-                  <StepTextBox>
-                    <p className="step-number">{step_number}</p>
-                    <h3 className="heading-tertiary">{heading_tertiary}</h3>
-                    <p className="step-description">{step_description}</p>
-                  </StepTextBox>
-                  <StepImgBox>
-                    <img src={`/images/app/${step_img}`} alt={step_img_alt} />
-                  </StepImgBox>
-                </React.Fragment>
-              )
-            )}
-          </HowItWorksGrid>
         </HowItWorksContainer>
+        <HowItWorksGrid>
+          {HowItWorksData.map(
+            ({
+              id,
+              step_number,
+              heading_tertiary,
+              step_description,
+              step_img,
+              step_img_alt,
+            }) => (
+              <React.Fragment key={id}>
+                <StepTextBox>
+                  <p className="step-number">{step_number}</p>
+                  <h3 className="heading-tertiary">{heading_tertiary}</h3>
+                  <p className="step-description">{step_description}</p>
+                </StepTextBox>
+                <StepImgBox>
+                  <img
+                    className="step-img"
+                    src={`/images/app/${step_img}`}
+                    alt={step_img_alt}
+                  />
+                </StepImgBox>
+              </React.Fragment>
+            )
+          )}
+        </HowItWorksGrid>
       </HowItWorksSectionStyles>
     </>
   )
@@ -101,21 +105,39 @@ const HowItWorksGrid = styled.div`
 
   div:nth-of-type(1) {
     order: 1;
+    @media (max-width: 34em) {
+      order: 2;
+    }
   }
   div:nth-of-type(2) {
     order: 2;
+    @media (max-width: 34em) {
+      order: 1;
+    }
   }
   div:nth-of-type(3) {
     order: 4;
+    @media (max-width: 34em) {
+      order: 4;
+    }
   }
   div:nth-of-type(4) {
     order: 3;
+    @media (max-width: 34em) {
+      order: 3;
+    }
   }
   div:nth-of-type(5) {
     order: 5;
+    @media (max-width: 34em) {
+      order: 6;
+    }
   }
   div:nth-of-type(6) {
     order: 6;
+    @media (max-width: 34em) {
+      order: 5;
+    }
   }
 `
 
@@ -129,8 +151,15 @@ const StepTextBox = styled.div`
 
   .heading-tertiary {
     font-size: 3rem;
+    font-weight: 700;
     line-height: 1.2;
+    letter-spacing: -0.5px;
     margin-bottom: 3.2rem;
+    color: var(--clr-heading);
+
+    @media (max-width: 75em) {
+      font-size: 2.4rem;
+    }
   }
 
   .step-description {
@@ -145,14 +174,6 @@ const StepImgBox = styled.div`
   align-items: center;
   justify-content: center;
 
-  &::before {
-    width: 60%;
-    height: 60%;
-    padding-bottom: 60%;
-    background-color: #fdf2e9;
-    z-index: -2;
-  }
-
   &::before,
   &::after {
     content: '';
@@ -164,8 +185,30 @@ const StepImgBox = styled.div`
     transform: translate(-50%, -50%);
   }
 
-  img {
+  &::before {
+    width: 60%;
+    height: 60%;
+    padding-bottom: 60%;
+    background-color: #fdf2e9;
+    z-index: -2;
+  }
+
+  &::after {
+    width: 45%;
+    padding-bottom: 45%;
+    background-color: #fae5d3;
+    z-index: -1;
+  }
+
+  @media (max-width: 34em) {
+    transform: translateY(2.4rem);
+  }
+
+  @media (max-width: 75em) {
+  }
+
+  img.step-img {
     width: 35%;
-    /* z-index: 10; */
+    z-index: 10;
   }
 `
