@@ -44,7 +44,7 @@ export default function Hero() {
                 ))}
               </div>
               <p>
-                <span>250,000 </span>meals delivered last year!
+                <span>250,000+ </span>meals delivered last year!
               </p>
             </HeroDeliveredMeals>
           </HeroTextBox>
@@ -142,12 +142,23 @@ const HeroTextBox = styled.div`
 
 const HeroDeliveredMeals = styled.div`
   display: flex;
+  /* display: grid; */
+  /* grid-template-columns: repeat(2, 1fr); */
   align-items: center;
   gap: 1.6rem;
   margin-top: 8rem;
 
+  @media (max-width: 59em) {
+    justify-content: center;
+    margin-top: 3.2rem;
+  }
+
   div {
     display: flex;
+    max-width: 100%;
+    @media (max-width: 59em) {
+      max-width: 50%;
+    }
 
     img {
       height: 4.8rem;
@@ -163,13 +174,19 @@ const HeroDeliveredMeals = styled.div`
   }
 
   p {
+    max-width: 100%;
     font-size: 1.8rem;
     font-weight: 600;
+    line-height: 14.4px;
     margin: 0;
+    @media (max-width: 59em) {
+      max-width: 50%;
+    }
 
     span {
       color: var(--clr-link-hover);
       font-weight: 700;
+      line-height: 14.4px;
     }
   }
 `
