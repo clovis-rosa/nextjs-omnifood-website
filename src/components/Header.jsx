@@ -89,6 +89,10 @@ const NavbarStyles = styled.header`
     justify-content: space-between;
     padding: 0 3.2rem;
   }
+
+  @media (max-width: 59em) {
+    height: 8rem;
+  }
 `
 
 const NavbarLogo = styled.img`
@@ -103,7 +107,7 @@ const Nav = styled.nav`
 
   @media (max-width: 59em) {
     position: fixed;
-    top: 9.6rem;
+    top: 8rem;
     left: 0;
     width: 100%;
     display: flex;

@@ -46,6 +46,10 @@ body {
   position: relative;
   top: 9.6rem;
   min-height: 200vh;
+
+  @media (max-width: 59em) {
+    top: 8rem;
+  }
 }
 
 // a:link,
