@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Card from './Card'
 
 export default function Meals() {
   return (
@@ -10,37 +11,7 @@ export default function Meals() {
           <H2>Omnifood AI chooses from 5,000+ recipes</H2>
         </Container>
         <ContainerGrid>
-          <div className="meal">
-            <img
-              className="meal-img"
-              src="images/meals/meal-1.jpg"
-              alt="Japanese Gyozas"
-            />
-            <div className="meal_content">
-              <div className="meal_tags">
-                <span className="tag_vegetarian">Vegetarian</span>
-              </div>
-              <p className="meal_title">Japanese Gyozas</p>
-              <ul clasNames="meal_attributes">
-                <li className="meal_attribute">
-                  <span>
-                    <strong>650 </strong>calories
-                  </span>
-                </li>
-                <li className="meal_attribute">
-                  <span>
-                    NutriScore ® <strong>74</strong>
-                  </span>
-                </li>
-                <li className="meal_attribute">
-                  <span>
-                    <strong>4.9 </strong>
-                    rating (537)
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <Card />
         </ContainerGrid>
       </MealsSectionStyles>
     </>
