@@ -72,12 +72,12 @@ const HowItWorksH2 = styled.h2`
   color: var(--clr-heading);
   margin-bottom: 9.6rem;
 
-  @media (max-width: 44em) {
-    margin-bottom: 4.8rem;
-  }
-
   @media (max-width: 75em) {
     font-size: 3.6rem;
+  }
+
+  @media (max-width: 44em) {
+    margin-bottom: 4.8rem;
   }
 `
 
@@ -93,14 +93,14 @@ const HowItWorksGrid = styled.div`
   padding: 0 3.2rem;
   margin: 0 auto;
 
-  @media (max-width: 34em) {
-    grid-template-columns: 1fr;
-    row-gap: 4.8rem;
-  }
-
   @media (max-width: 75em) {
     column-gap: 4.8rem;
     row-gap: 6.4rem;
+  }
+
+  @media (max-width: 34em) {
+    grid-template-columns: 1fr;
+    row-gap: 4.8rem;
   }
 
   div:nth-of-type(1) {
@@ -202,9 +202,6 @@ const StepImgBox = styled.div`
 
   @media (max-width: 34em) {
     transform: translateY(2.4rem);
-  }
-
-  @media (max-width: 75em) {
   }
 
   img.step-img {

@@ -21,3 +21,7 @@ This is a starter template for [Learn Next.js](https://nextjs.org/learn).
                               .~......'#'  May the Force be with you.
                               '..,,.,_]`
                               .L..`..``.
+
+## Resources
+
+[How to disable vendor prefixes in styled-components configuration?](https://stackoverflow.com/questions/62789170/how-to-disable-vendor-prefixes-in-styled-components-configuration)

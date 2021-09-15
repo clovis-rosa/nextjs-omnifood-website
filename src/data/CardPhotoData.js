@@ -1,4 +1,4 @@
-export const CardData = [
+export const CardPhotoData = [
   {
     id: '001',
     img_src: 'meal-1.jpg',

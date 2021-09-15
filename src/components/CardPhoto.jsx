@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import { IconFlame, IconStar, IconRestaurant } from '@/components/SvgFiles'
-import { CardData } from '@/data/CardData'
+import { CardPhotoData } from '@/data/CardPhotoData'
 
-export default function Card() {
+export default function CardPhoto() {
   return (
     <>
-      {CardData.map(
+      {CardPhotoData.map(
         ({
           id,
           img_src,

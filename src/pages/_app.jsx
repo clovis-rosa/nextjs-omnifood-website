@@ -1,12 +1,16 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, StyleSheetManager } from 'styled-components'
 import '@/styles/global.scss'
 
 export default function App({ Component, pageProps }) {
   return (
-    <>
-      <GlobalStyle />
-      <Component {...pageProps} />
-    </>
+    <StyleSheetManager
+      disableVendorPrefixes={process.env.NODE_ENV === 'development'}
+    >
+      <>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </>
+    </StyleSheetManager>
   )
 }
 

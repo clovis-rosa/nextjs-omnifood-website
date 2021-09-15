@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import Card from './Card'
+import CardList from './CardList'
+import CardPhoto from './CardPhoto'
 
 export default function Meals() {
   return (
@@ -11,7 +12,8 @@ export default function Meals() {
           <H2>Omnifood AI chooses from 5,000+ recipes</H2>
         </Container>
         <ContainerGrid>
-          <Card />
+          <CardPhoto />
+          <CardList />
         </ContainerGrid>
       </MealsSectionStyles>
     </>
@@ -72,5 +74,14 @@ const ContainerGrid = styled.div`
   @media (max-width: 75em) {
     column-gap: 4.8rem;
     row-gap: 6.4rem;
+  }
+
+  @media (max-width: 44em) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 34em) {
+    grid-template-columns: 1fr;
+    row-gap: 4.8rem;
   }
 `
