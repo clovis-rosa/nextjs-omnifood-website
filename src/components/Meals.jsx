@@ -15,6 +15,9 @@ export default function Meals() {
           <CardPhoto />
           <CardList />
         </ContainerGrid>
+        <AllRecipes>
+          <a href="#">See all recipes →</a>
+        </AllRecipes>
       </MealsSectionStyles>
     </>
   )
@@ -83,5 +86,29 @@ const ContainerGrid = styled.div`
   @media (max-width: 34em) {
     grid-template-columns: 1fr;
     row-gap: 4.8rem;
+  }
+`
+
+const AllRecipes = styled.div`
+  max-width: 120rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.8rem;
+
+  a:link,
+  a:visited {
+    display: inline-block;
+    color: #e67e22;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: all 0.3s;
+
+    &:hover,
+    &:active {
+      color: #cf711f;
+      border-bottom: 1px solid transparent;
+    }
   }
 `

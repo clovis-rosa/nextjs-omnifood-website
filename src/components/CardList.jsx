@@ -31,6 +31,11 @@ export default function CardList() {
 }
 
 const CardStyles = styled.div`
+  @media (max-width: 44em) {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+
   .heading-tertiary {
     font-size: 3rem;
     font-weight: 700;
@@ -39,6 +44,10 @@ const CardStyles = styled.div`
     color: #333;
     margin-bottom: 3.2rem;
     max-height: 100%; //
+
+    @media (max-width: 75em) {
+      font-size: 2.4rem;
+    }
   }
 
   .list {
@@ -58,8 +67,8 @@ const CardStyles = styled.div`
 
       .icon_inner {
         display: block;
-        height: 2.4rem;
-        width: 2.4rem;
+        height: 3rem;
+        width: 3rem;
         color: #e67e22;
 
         svg {
